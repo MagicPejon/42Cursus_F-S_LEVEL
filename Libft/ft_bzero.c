@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 20:42:26 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/01/21 21:07:53 by amalbrei         ###   ########.fr       */
+/*   Updated: 2022/01/26 17:16:24 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned int	i;
-	unsigned char	*ptr;
+	size_t	i;
 
 	i = 0;
 	ptr = s;
 	while (i < n)
-		ptr[i++] = '\0';
+	{
+		((char *)s)[i] = 0;
+		i++;
+	}
 }
