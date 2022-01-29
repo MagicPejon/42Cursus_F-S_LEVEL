@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 13:50:38 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/01/25 17:07:44 by amalbrei         ###   ########.fr       */
+/*   Updated: 2022/01/29 13:08:13 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,14 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	if (c == '\0')
+	char	*str;
+
+	str = (char *) s;
+	while (*str != c)
 	{
-		while (*s)
-		{
-			s++;
-		}
-		return ((char *)s);
+		if (*str == '\0')
+			return (NULL);
+		str++;
 	}
-	else
-	{
-		while (*s && *s != c)
-			s++;
-		if (*s == c)
-			return ((char *)s);
-	}
-	return (NULL);
+	return (str);
 }

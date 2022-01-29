@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 19:45:42 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/01/21 20:18:23 by amalbrei         ###   ########.fr       */
+/*   Updated: 2022/01/29 15:26:17 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,11 @@ size_t	ft_strlen(const char *c)
 		i++;
 	return (i);
 }
+
+#include <stdio.h>
+
+/*int main()
+{
+	char i[] = "Hello";
+	printf("%ld", ft_strlen(i));
+}*/

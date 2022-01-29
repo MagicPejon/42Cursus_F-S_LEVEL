@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amalbrei <amalbrei@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/25 17:09:16 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/01/29 17:04:08 by amalbrei         ###   ########.fr       */
+/*   Created: 2022/01/29 13:15:30 by amalbrei          #+#    #+#             */
+/*   Updated: 2022/01/29 14:11:09 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t	i;
+	char	*str;
+	char	*tar;
 
-	i = 0;
-	if (n == 0)
-		return (0);
-	while ((unsigned char)s1[i] == (unsigned char)s2[i] && i < n - 1 && s1[i] && s2[i])
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	str = (char *) s;
+	tar = NULL;
+	while (*str)
+	{
+		if (*str == c)
+			tar = str;
+		str++;
+	}
+	if (tar == NULL && c != '\0')
+		return (NULL);
+	if (*str == c)
+		return (str);
+	else
+		return (tar);
 }
 
 /*#include <stdio.h>
@@ -29,9 +38,9 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 int main()
 {
-	char test1[] = "\200";
-	char test2[] = "\0";
+	char	test1[] = "hey there hei";
+	int		c = '\0';
 
-	printf("%d\n", ft_strncmp(test1, test2, 1));
-	printf("%d\n", strncmp(test1, test2, 1)); 
+	printf("%s\n",ft_strrchr(test1, c));
+	printf("%s\n",strrchr(test1, c));
 }*/
