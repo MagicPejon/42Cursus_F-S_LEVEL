@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amalbrei <amalbrei@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/25 17:09:16 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/01/30 15:55:00 by amalbrei         ###   ########.fr       */
+/*   Created: 2022/02/01 13:27:07 by amalbrei          #+#    #+#             */
+/*   Updated: 2022/02/01 13:47:26 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	size_t	i;
+	char			*t;
+	char			*s2;
+	unsigned int	i;
 
 	i = 0;
-	if (n == 0)
-		return (0);
-	while ((unsigned char)s1[i] == (unsigned char)s2[i] && i < n - 1
-		&& s1[i] && s2[i])
+	t = malloc(sizeof(char) * (len + 1));
+	if (t == NULL)
+		return (t);
+	s2 = ft_strchr(s, s[start]);
+	while (i < len)
+	{
+		t[i] = s2[i];
 		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	}
+	t[i] = '\0';
+	return (t);
 }
-
-/*#include <stdio.h>
-#include <string.h>
-
-int main()
-{
-	char test1[] = "\200";
-	char test2[] = "\0";
-
-	printf("%d\n", ft_strncmp(test1, test2, 1));
-	printf("%d\n", strncmp(test1, test2, 1)); 
-}*/

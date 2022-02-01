@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 15:43:44 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/01/27 17:58:22 by amalbrei         ###   ########.fr       */
+/*   Updated: 2022/02/01 19:32:47 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,20 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dst[i] = '\0';
 	return (len);
 }
+/*
+#include<stdio.h>
+#include<string.h>
+
+int main()
+{
+
+	char test1[] = "rrrrrrrrrrrrrrr";
+	//char test2[] = "lorem ipsum dolor sit amet";
+	char test3[] = "rrrrrrrrrrrrrrr";
+	//char test4[] = "lorem ipsum dolor sit amet";
+
+	printf("%lu\n", ft_strlcat(test1, "lorem ipsum dolor sit amet", 5));
+	printf("|%s|\n", test1);
+	printf("%lu\n", strlcat(test3, "lorem ipsum dolor sit amet", 5));
+	printf("|%s|\n", test3);
+}*/

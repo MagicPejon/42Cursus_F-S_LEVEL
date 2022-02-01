@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amalbrei <amalbrei@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/25 17:09:16 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/01/30 15:55:00 by amalbrei         ###   ########.fr       */
+/*   Created: 2022/02/01 17:02:15 by amalbrei          #+#    #+#             */
+/*   Updated: 2022/02/01 17:30:02 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	size_t	i;
+	int		i;
+	int		j;
+	size_t	s1_size;
+	size_t	s2_size;
+	char	*str;
 
 	i = 0;
-	if (n == 0)
-		return (0);
-	while ((unsigned char)s1[i] == (unsigned char)s2[i] && i < n - 1
-		&& s1[i] && s2[i])
+	j = 0;
+	s1_size = ft_strlen(s1);
+	s2_size = ft_strlen(s2);
+	str = malloc(sizeof(char) * ((s1_size + s2_size) + 1));
+	if (str == NULL)
+		return (str);
+	while (s1[i])
+	{
+		str[i] = s1[i];
 		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	}
+	while (s2[j])
+	{
+		str[i + j] = s2[j];
+		j++;
+	}
+	return (str);
 }
-
-/*#include <stdio.h>
-#include <string.h>
-
-int main()
-{
-	char test1[] = "\200";
-	char test2[] = "\0";
-
-	printf("%d\n", ft_strncmp(test1, test2, 1));
-	printf("%d\n", strncmp(test1, test2, 1)); 
-}*/
