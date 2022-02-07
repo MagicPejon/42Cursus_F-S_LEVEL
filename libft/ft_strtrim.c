@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amalbrei <amalbrei@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/01 17:44:12 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/02/01 18:51:34 by amalbrei         ###   ########.fr       */
+/*   Created: 2022/02/06 16:36:23 by amalbrei          #+#    #+#             */
+/*   Updated: 2022/02/06 17:29:02 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,18 @@
 
 char	*ft_strtrim(const char *s1, const char *set)
 {
-	int		i; 
-	int		j; 
+	int		i;
+	int		s1_len;
 	char	*str;
 
-	i = ft_strlen(s1);
-	j = 0;
-	while (set++)
-	{
-		while (s1++)
-		{
-			if (s1 == set)
-			{
-				ft_bzero(s1, 1);
-				j++;
-			}
-		}
-	}
-	str = malloc(sizeof(char) * (i - j));
-	while (i > 0)
-	{
-		if (s1[i] == 0)
-		{
-			i--;
-			continue ;
-		}
-		str[i - j] = s1[i--];
-	}
-	str[j + 1] = '\0';
+	i = 0;
+	if (!s1 || !set)
+		return (NULL);
+	while (s1[i] && ft_strchr(set, s1[i]))
+		i++;
+	s1_len = ft_strlen(s1 + i);
+	while (s1_len > 0 && ft_strchr(set, *(s1 + i + s1_len - 1)))
+		s1_len--;
+	str = ft_substr(s1, i, s1_len);
 	return (str);
 }

@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amalbrei <amalbrei@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/01 17:02:15 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/02/03 13:26:06 by amalbrei         ###   ########.fr       */
+/*   Created: 2022/02/07 15:48:47 by amalbrei          #+#    #+#             */
+/*   Updated: 2022/02/07 18:55:35 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	**ft_split(const char *s, char c)
 {
 	int		i;
+	int		k;
 	int		j;
-	char	*str;
+	int		l;
+	char	**str;
 
 	i = 0;
 	j = 0;
-	if (s1 && s2)
+	k = 0;
+	while (s[i] != c)
+		i++;
+	str[j] = ft_substr(s, 0, i);
+	i++;
+	j++;
+	l = i;
+	while (s[i])
 	{
-		str = malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1));
-		if (str == NULL)
-			return (str);
-		while (s1[i])
-		{
-			str[i] = s1[i];
-			i++;
-		}
-		while (s2[j])
-		{
-			str[i + j] = s2[j];
-			j++;
-		}
-		str[i + j] = '\0';
-		return (str);
+		i++;
+		k++;
 	}
-	return (NULL);
+	str[j] = ft_substr(s, l, k);
+	return (str);
 }
