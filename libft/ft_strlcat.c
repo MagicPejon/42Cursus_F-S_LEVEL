@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 15:43:44 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/02/03 11:05:37 by amalbrei         ###   ########.fr       */
+/*   Updated: 2022/02/09 20:32:31 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 
 int main()
 {
+	char *dest;
+	dest = (char *)malloc(sizeof(*dest) * 15);
+	memset(dest, 'r', 15);
+	printf("%lu\n", ft_strlcat(dest, "lorem ipsum dolor sit amet", 5));
+	write(1, "\n", 1);
+	write(1, dest, 15);
 
 	char test1[] = "rrrrrrrrrrrrrrr";
 	char test2[] = "lorem ipsum dolor sit amet";

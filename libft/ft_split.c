@@ -6,34 +6,83 @@
 /*   By: amalbrei <amalbrei@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 15:48:47 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/02/07 18:55:35 by amalbrei         ###   ########.fr       */
+/*   Updated: 2022/02/09 20:14:49 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-char	**ft_split(const char *s, char c)
+void	assigns(const char *s, char **str, char c, int count)
 {
-	int		i;
-	int		k;
-	int		j;
-	int		l;
-	char	**str;
+	int	j;
+	int	i;
+	int	start_index;
 
 	i = 0;
 	j = 0;
-	k = 0;
-	while (s[i] != c)
-		i++;
-	str[j] = ft_substr(s, 0, i);
-	i++;
-	j++;
-	l = i;
+	while (i < count && s[j])
+	{
+		if (s[j] == c)
+			j++;
+		else
+		{
+			start_index = j;
+			while (s[j] != c && s[j] != '\0')
+				j++;
+			str[i] = ft_substr(s, start_index, j - start_index);
+			i++;
+		}
+	}
+	str[i] = 0;
+}
+
+int	getwordcount(const char *s, char c)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
 	while (s[i])
 	{
-		i++;
-		k++;
+		if (s[i] == c)
+			i++;
+		else if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+		{
+			j++;
+			i++;
+		}
+		else if (s[i] != c && s[i + 1] != c)
+			i++;
 	}
-	str[j] = ft_substr(s, l, k);
+	return (j);
+}
+
+char	**ft_split(const char *s, char c)
+{
+	int		count;
+	char	**str;
+
+	if (!s)
+		return (NULL);
+	count = getwordcount(s, c);
+	str = (char **)malloc((count + 1) * sizeof(char *));
+	if (str == NULL)
+		return (str);
+	assigns(s, str, c, count);
 	return (str);
 }
+
+/*int main ()
+{
+	char **pl;
+	int i = 0;
+	pl = ft_split("    yyyyy   Hi thisyyyyy i sy yyy splityyyyy hoi", ' ');
+	while (pl[i])
+	{
+		printf("%s\n", pl[i]);
+		free(pl[i]);
+		i++;
+	}
+}*/
