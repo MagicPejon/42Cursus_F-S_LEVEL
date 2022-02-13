@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 15:43:44 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/02/09 20:32:31 by amalbrei         ###   ########.fr       */
+/*   Updated: 2022/02/13 17:32:39 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,27 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
 	size_t	j;
-	size_t	len;
+	size_t	len_d;
+	size_t	len_s;
 
-	i = 0;
+	i = ft_strlen(dst);
 	j = 0;
-	len = 0;
-	while (dst[i])
-		i++;
-	while (src[len])
-		len++;
-	if (dstsize <= i)
-		len += dstsize;
-	else
-		len += i;
-	while (i + 1 < dstsize && src[j])
+	len_d = ft_strlen(dst);
+	len_s = ft_strlen(src);
+	if (dstsize == 0)
+		return (len_s);
+	while ((i + j) < dstsize - 1 && src[j])
 	{
-		dst[i] = src[j];
+		dst[i + j] = src[j];
 		j++;
-		i++;
 	}
-	dst[i] = '\0';
-	return (len);
+	dst[i + j] = '\0';
+	if (dstsize > len_d)
+		return (len_s + len_d);
+	return (len_s + dstsize);
 }
 
-/*#include<stdio.h>
-#include<string.h>
+/*#include<string.h>
 
 int main()
 {

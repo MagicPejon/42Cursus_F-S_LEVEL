@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 15:48:47 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/02/09 20:14:49 by amalbrei         ###   ########.fr       */
+/*   Updated: 2022/02/13 20:56:59 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	**ft_split(const char *s, char c)
 {
 	char **pl;
 	int i = 0;
-	pl = ft_split("    yyyyy   Hi thisyyyyy i sy yyy splityyyyy hoi", ' ');
+	pl = ft_split("yyyyy   Hi thisyyyyy i sy yyy splityyyyy hoi", ' ');
 	while (pl[i])
 	{
 		printf("%s\n", pl[i]);

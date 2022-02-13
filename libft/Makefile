@@ -6,7 +6,7 @@
 #    By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/21 19:43:26 by amalbrei          #+#    #+#              #
-#    Updated: 2022/02/08 17:48:35 by amalbrei         ###   ########.fr        #
+#    Updated: 2022/02/13 19:53:52 by amalbrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,6 @@ CC		=	gcc
 CFLAGS	=	-Wall	-Wextra	-Werror
 LIB		=	ar	-rcs
 RM		=	rm	-rf
-
-INCLUDE = 	.
 
 SRCS = 		ft_isalpha.c	ft_isdigit.c	ft_isalnum.c	ft_isascii.c	\
 			ft_isprint.c	ft_strlen.c		ft_memset.c		ft_bzero.c		\
@@ -28,15 +26,22 @@ SRCS = 		ft_isalpha.c	ft_isdigit.c	ft_isalnum.c	ft_isascii.c	\
 			ft_putchar_fd.c	ft_putstr_fd.c	ft_putendl_fd.c	ft_putnbr_fd.c	\
 			ft_itoa.c		ft_split.c
 
+B_SRCS =	ft_lstnew.c		ft_lstadd_front.c	ft_lstsize.c	ft_lstlast.c\
+
 OBJS = 		$(SRCS:.c=.o)
+
+B_OBJS =	$(B_SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(LIB) $(NAME) $(OBJS)
 
+bonus: $(B_OBJS)
+	$(LIB) $(NAME) $(B_OBJS)
+
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(B_OBJS)
 
 fclean: clean
 	$(RM) $(NAME)
