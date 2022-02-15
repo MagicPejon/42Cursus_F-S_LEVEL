@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 19:48:32 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/02/13 19:59:15 by amalbrei         ###   ########.fr       */
+/*   Updated: 2022/02/14 19:07:16 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,3 @@ t_list	*ft_lstlast(t_list *lst)
 	}
 	return (NULL);
 }
-

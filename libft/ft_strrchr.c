@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 13:15:30 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/01/29 14:11:09 by amalbrei         ###   ########.fr       */
+/*   Updated: 2022/02/14 19:04:48 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ char	*ft_strrchr(const char *s, int c)
 	tar = NULL;
 	while (*str)
 	{
-		if (*str == c)
+		if ((unsigned char) *str == (unsigned char) c)
 			tar = str;
 		str++;
 	}
 	if (tar == NULL && c != '\0')
 		return (NULL);
-	if (*str == c)
+	if ((unsigned char) *str == (unsigned char) c)
 		return (str);
 	else
 		return (tar);

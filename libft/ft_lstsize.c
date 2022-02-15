@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 19:20:35 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/02/13 19:38:50 by amalbrei         ###   ########.fr       */
+/*   Updated: 2022/02/14 19:15:11 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int 			count;
-	t_list			*point;
+	int		count;
+	t_list	*point;
 
 	count = 0;
 	point = lst;
