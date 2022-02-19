@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 13:15:30 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/02/14 19:04:48 by amalbrei         ###   ########.fr       */
+/*   Updated: 2022/02/16 23:03:56 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,3 @@ char	*ft_strrchr(const char *s, int c)
 	else
 		return (tar);
 }
-
-/*#include <stdio.h>
-#include <string.h>
-
-int main()
-{
-	char	test1[] = "hey there hei";
-	int		c = '\0';
-
-	printf("%s\n",ft_strrchr(test1, c));
-	printf("%s\n",strrchr(test1, c));
-}*/
