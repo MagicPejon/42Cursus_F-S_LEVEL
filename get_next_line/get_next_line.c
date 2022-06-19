@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:16:14 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/05/23 17:36:42 by amalbrei         ###   ########.fr       */
+/*   Updated: 2022/05/31 16:03:44 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ function)
 
 -char *line_read: variable to return which will be used to return what is read
 */
-char	*ft_before_read(int fd, char *line_read)
+char	*ft_scan_buffer(int fd, char *line_read)
 {
 	char	*buff;
 	int		no_of_bytes;
@@ -66,16 +66,22 @@ char	*get_next_line(int fd)
 	char			*line_shown;
 	static char		*line_read;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE >= 2147483647)
 		return (NULL);
-	line_read = ft_before_read(fd, line_read);
+	line_read = ft_scan_buffer(fd, line_read);
 	if (!line_read || line_read[0] == '\0')
 	{
-		free(line_read);
+		if (line_read)
+			free(line_read);
 		line_read = NULL;
 		return (NULL);
 	}
 	line_shown = ft_get_line(line_read);
-	line_read = ft_after_read(line_read);
+	line_read = ft_save_extra_characters(line_read);
+	if (line_read[0] == '\0')
+	{
+		free(line_read);
+		line_read = NULL;
+	}
 	return (line_shown);
 }

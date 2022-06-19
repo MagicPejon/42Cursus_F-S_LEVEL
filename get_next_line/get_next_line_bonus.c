@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 19:12:42 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/05/23 17:37:02 by amalbrei         ###   ########.fr       */
+/*   Updated: 2022/05/31 16:04:32 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ function)
 
 -char *line_read: variable to return which will be used to return what is read
 */
-char	*ft_before_read(int fd, char *line_read)
+char	*ft_scan_buffer(int fd, char *line_read)
 {
 	char	*buff;
 	int		no_of_bytes;
@@ -66,16 +66,22 @@ char	*get_next_line(int fd)
 	char			*line_shown;
 	static char		*line_read[10240];
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
-	line_read[fd] = ft_before_read(fd, line_read[fd]);
+	if (fd < 0 || fd >= 10240 || BUFFER_SIZE <= 0 || BUFFER_SIZE >= 2147483647)
+		return (NULL);
+	line_read[fd] = ft_scan_buffer(fd, line_read[fd]);
 	if (!line_read[fd] || line_read[fd][0] == '\0')
 	{
-		free(line_read[fd]);
+		if (line_read[fd])
+			free(line_read[fd]);
 		line_read[fd] = NULL;
 		return (NULL);
 	}
 	line_shown = ft_get_line(line_read[fd]);
-	line_read[fd] = ft_after_read(line_read[fd]);
+	line_read[fd] = ft_save_extra_characters(line_read[fd]);
+	if (line_read[fd][0] == '\0')
+	{
+		free(line_read[fd]);
+		line_read[fd] = NULL;
+	}
 	return (line_shown);
 }

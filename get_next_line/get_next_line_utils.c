@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:16:34 by amalbrei          #+#    #+#             */
-/*   Updated: 2022/05/23 17:43:08 by amalbrei         ###   ########.fr       */
+/*   Updated: 2022/05/29 20:37:41 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s1)
 	{
 		s1 = (char *)malloc(sizeof(char));
+		if (!s1 || !s2)
+			return (NULL);
 		s1[0] = '\0';
 	}
-	if (!s1 || !s2)
-		return (NULL);
 	str = malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1));
 	if (str == NULL)
 		return (NULL);
@@ -108,9 +108,9 @@ char	*ft_get_line(char *line_read)
 	i = 0;
 	if (!line_read)
 		return (NULL);
-	while (line_read[i] && line_read[i] != '\n')
+	while (line_read[i])
 		i++;
-	str = (char *)malloc(sizeof(char) * (i + 2));
+	str = (char *)malloc(sizeof(char) * (i + 1));
 	if (!str)
 		return (NULL);
 	i = 0;
@@ -136,7 +136,7 @@ call of the entire function
 PARAMETERS
 char *line_read: line to be saved and returned
 */
-char	*ft_after_read(char *line_read)
+char	*ft_save_extra_characters(char *line_read)
 {
 	int		i;
 	int		j;
